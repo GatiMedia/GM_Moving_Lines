@@ -4,7 +4,7 @@ Group {
  note_font Verdana
  selected true
  xpos 180
- ypos -1018
+ ypos -513
  addUserKnob {20 User}
  addUserKnob {6 red +STARTLINE}
  red true
@@ -28,9 +28,8 @@ Group {
  invert true
  addUserKnob {26 ""}
  addUserKnob {6 cross l "Enable Cross" +STARTLINE}
- cross true
  addUserKnob {41 operation T Merge_ML.operation}
- addUserKnob {26 "" +STARTLINE}
+ addUserKnob {26 ""}
  addUserKnob {26 TEXT l "" +STARTLINE T "<font color=#808080 size=\"5\" >1.01 version</font>"}
  addUserKnob {26 HeadlineB l "" +STARTLINE T "<font color=#808080 size=\"2\">GM_Moving_Lines© by Attila Gasparetz</font>"}
 }
@@ -38,12 +37,12 @@ Group {
   inputs 0
   name Input
   xpos 180
-  ypos -657
+  ypos -658
  }
  Remove {
   name Remove1
   xpos 180
-  ypos -591
+  ypos -592
  }
  Dot {
   name Dot5
@@ -53,7 +52,7 @@ Group {
   xpos 214
   ypos -534
  }
-set N919bb1a0 [stack 0]
+set N871ace00 [stack 0]
  Dot {
   name Dot7
   tile_color 0x949494ff
@@ -67,7 +66,7 @@ set N919bb1a0 [stack 0]
   expr3 "( \[value proxy.type](\[if \{\[numvalue proxy.axis] == 0\} \{return \"y\"\} else \{return \"x\"\}]/proxy.thickness \[if \{\[numvalue proxy.direction] == 0\} \{return \"-\"\} else \{return \"+\"\}]  (frame+proxy.offset)*proxy.speed )  )*proxy.value"
   name Moving_Lines_Exp1
   xpos 400
-  ypos -489
+  ypos -490
   addUserKnob {20 User}
   addUserKnob {4 type M {sin cos tan}}
   addUserKnob {4 axis M {x y}}
@@ -82,11 +81,16 @@ set N919bb1a0 [stack 0]
   value 1
   addUserKnob {7 offset R 0 100}
  }
+ Clamp {
+  name Clamp_ML1
+  xpos 400
+  ypos -424
+ }
  Group {
   name key_chew_ML1
   help "======== KeyChew beta ========\n=============================\n\nThis is a port of the KeyChew macro for Shake to Nuke.\n\nThere might be tiny differences on the results given in both apps. Some of them are caused by the internal algorithms of each app, and others by the way I faked the JSplineV\nexpression of Shake in Nuke. If you know a better way to solve this, let\nme know!!\n\n=============================\n             2009 Cuco Bures\n============================="
   xpos 400
-  ypos -369
+  ypos -346
   addUserKnob {20 Controls}
   addUserKnob {7 chew t "\t\t" R -200 200}
   chew {{parent.key_chew_ML.chew}}
@@ -99,20 +103,20 @@ set N919bb1a0 [stack 0]
    name Input
    xpos 0
   }
-set N1fccad0 [stack 0]
+set N871ac000 [stack 0]
   Dot {
    name Dot1
    xpos 366
    ypos 5
   }
-set N1fd1410 [stack 0]
-push $N1fd1410
+set N871d3c00 [stack 0]
+push $N871d3c00
   Invert {
    name Invert1
    xpos 177
    ypos 34
   }
-push $N1fd1410
+push $N871d3c00
   Switch {
    inputs 2
    which {{"\[value parent.chew]>=0?0:1"}}
@@ -144,7 +148,7 @@ push $N1fd1410
    addUserKnob {7 JSplineVFake}
    JSplineVFake {{curve i l 0.9958 k x5 0.95 0.8 x20 0.5 x40 0.3 x80 0.2 l x200 0.1}}
   }
-set N8a4bd40 [stack 0]
+set N871d2a80 [stack 0]
   Merge2 {
    inputs 2
    operation minus
@@ -152,7 +156,7 @@ set N8a4bd40 [stack 0]
    xpos 332
    ypos 218
   }
-push $N8a4bd40
+push $N871d2a80
   Switch {
    inputs 2
    which {{"\[value parent.chew]>=0?0:1"}}
@@ -171,7 +175,7 @@ push $N8a4bd40
    xpos 177
    ypos 446
   }
-push $N1fccad0
+push $N871ac000
   ShuffleCopy {
    inputs 2
    name ShuffleCopy1
@@ -198,13 +202,13 @@ push $N1fccad0
   xpos 434
   ypos -270
  }
-push $N919bb1a0
+push $N871ace00
  Expression {
   channel3 alpha
   expr3 "( \[value proxy.type](\[if \{\[numvalue proxy.axis] == 0\} \{return \"x\"\} else \{return \"y\"\}]/proxy.thickness \[if \{\[numvalue proxy.direction] == 0\} \{return \"-\"\} else \{return \"+\"\}]  (frame+proxy.offset)*proxy.speed )  )*proxy.value"
   name Moving_Lines_Exp
   xpos 180
-  ypos -489
+  ypos -490
   addUserKnob {20 User}
   addUserKnob {4 type M {sin cos tan}}
   addUserKnob {4 axis M {x y}}
@@ -221,11 +225,16 @@ push $N919bb1a0
   addUserKnob {7 rotate R 0 180}
   rotate 23.6
  }
+ Clamp {
+  name Clamp_ML
+  xpos 180
+  ypos -424
+ }
  Group {
   name key_chew_ML
   help "======== KeyChew beta ========\n=============================\n\nThis is a port of the KeyChew macro for Shake to Nuke.\n\nThere might be tiny differences on the results given in both apps. Some of them are caused by the internal algorithms of each app, and others by the way I faked the JSplineV\nexpression of Shake in Nuke. If you know a better way to solve this, let\nme know!!\n\n=============================\n             2009 Cuco Bures\n============================="
   xpos 180
-  ypos -369
+  ypos -346
   addUserKnob {20 Controls}
   addUserKnob {7 chew t "\t\t" R -200 200}
   addUserKnob {7 soften R 0 200}
@@ -236,20 +245,20 @@ push $N919bb1a0
    name Input
    xpos 0
   }
-set N919e6a20 [stack 0]
+set N87210380 [stack 0]
   Dot {
    name Dot1
    xpos 366
    ypos 5
   }
-set N919eb310 [stack 0]
-push $N919eb310
+set N87210000 [stack 0]
+push $N87210000
   Invert {
    name Invert1
    xpos 177
    ypos 34
   }
-push $N919eb310
+push $N87210000
   Switch {
    inputs 2
    which {{"\[value parent.chew]>=0?0:1"}}
@@ -281,7 +290,7 @@ push $N919eb310
    addUserKnob {7 JSplineVFake}
    JSplineVFake {{curve i l 0.9958 k x5 0.95 0.8 x20 0.5 x40 0.3 x80 0.2 l x200 0.1}}
   }
-set N918a00d0 [stack 0]
+set N87238e00 [stack 0]
   Merge2 {
    inputs 2
    operation minus
@@ -289,7 +298,7 @@ set N918a00d0 [stack 0]
    xpos 332
    ypos 218
   }
-push $N918a00d0
+push $N87238e00
   Switch {
    inputs 2
    which {{"\[value parent.chew]>=0?0:1"}}
@@ -308,7 +317,7 @@ push $N918a00d0
    xpos 177
    ypos 446
   }
-push $N919e6a20
+push $N87210380
   ShuffleCopy {
    inputs 2
    name ShuffleCopy1
@@ -331,18 +340,13 @@ push $N919e6a20
   inputs 2
   name Merge_ML
   xpos 180
-  ypos -273
+  ypos -274
   disable {{"parent.cross ==0"}}
- }
- Clamp {
-  name Clamp_ML
-  xpos 180
-  ypos -207
  }
  Invert {
   name Invert_ML
   xpos 180
-  ypos -159
+  ypos -160
   disable {{"parent.invert == 0"}}
  }
  Dot {
@@ -350,32 +354,31 @@ push $N919e6a20
   tile_color 0x949494ff
   note_font_size 22
   note_font_color 0xffffffff
-  selected true
   xpos 214
   ypos -78
  }
-set N4d941c80 [stack 0]
+set N87278700 [stack 0]
  Dot {
   name Dot2
   xpos 214
   ypos 18
  }
-set N91780f50 [stack 0]
+set N87278380 [stack 0]
  Dot {
   name Dot3
   xpos 214
   ypos 114
  }
-set N91785660 [stack 0]
+set N87278000 [stack 0]
  Dot {
   name Dot4
   xpos 214
   ypos 210
  }
-push $N91785660
-push $N91780f50
-push $N4d941c80
-push $N919bb1a0
+push $N87278000
+push $N87278380
+push $N87278700
+push $N871ace00
  Dot {
   name Dot1
   xpos -6
@@ -390,7 +393,7 @@ push $N919bb1a0
   name ShuffleCopy_r
   tile_color 0xff0000ff
   xpos -40
-  ypos -81
+  ypos -82
   disable {{"parent.red == 0"}}
  }
  ShuffleCopy {
@@ -401,7 +404,7 @@ push $N919bb1a0
   name ShuffleCopy_g
   tile_color 0x1fff00ff
   xpos -40
-  ypos 15
+  ypos 14
   disable {{"parent.green == 0"}}
  }
  ShuffleCopy {
@@ -411,7 +414,7 @@ push $N919bb1a0
   name ShuffleCopy_b
   tile_color 0x3fffff
   xpos -40
-  ypos 111
+  ypos 110
   disable {{"parent.blue == 0"}}
  }
  ShuffleCopy {
@@ -419,26 +422,27 @@ push $N919bb1a0
   name ShuffleCopy_a
   tile_color 0xaaaaaaff
   xpos -40
-  ypos 207
+  ypos 206
   disable {{"parent.alpha == 0"}}
  }
  Output {
   name Output1
   xpos -40
-  ypos 471
+  ypos 470
  }
  NoOp {
   inputs 0
   name proxy
   xpos 620
-  ypos -489
+  ypos -490
   addUserKnob {20 User}
   addUserKnob {4 type l typ M {sin cos tan}}
   addUserKnob {4 axis M {x y}}
+  axis y
   addUserKnob {4 direction M {up down}}
   direction down
   addUserKnob {7 thickness R 1 100}
-  thickness 15
+  thickness 10
   addUserKnob {7 speed R 0 2}
   speed 0.5
   addUserKnob {7 value R 0 10}
