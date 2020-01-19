@@ -3,10 +3,10 @@ Group {
  tile_color 0xe8f57dff
  note_font "DejaVu Sans"
  selected true
- xpos 5130
- ypos 543
+ xpos 2984
+ ypos -297
  addUserKnob {20 User}
- addUserKnob {4 modes l Output M {"Pattern Only" "Pattern Over Image" "Distorted Image" STMap}}
+ addUserKnob {4 output l Output M {"Pattern Only" "Pattern Over Image" "Distorted Image" STMap ""}}
  addUserKnob {6 keep_a l "Keep Original Alpha" -STARTLINE}
  keep_a true
  addUserKnob {26 ""}
@@ -25,10 +25,10 @@ Group {
  addUserKnob {26 ""}
  addUserKnob {6 cross l "Enable Cross" +STARTLINE}
  cross true
- addUserKnob {41 operation T Merge_ML.operation}
+ addUserKnob {41 operation1 T Merge_Proxy.operation1}
  addUserKnob {26 ""}
  addUserKnob {41 mix l Mix T Merge2.mix}
- addUserKnob {26 "" +STARTLINE}
+ addUserKnob {26 ""}
  addUserKnob {26 TEXT l "" +STARTLINE T "<font color=#808080 size=\"5\" >1.01 version</font>"}
  addUserKnob {26 HeadlineB l "" +STARTLINE T "<font color=#808080 size=\"2\">GM_Moving_Lines© by Attila Gasparetz</font>"}
 }
@@ -43,7 +43,7 @@ Group {
   xpos 214
   ypos -750
  }
-set N54d92000 [stack 0]
+set N8bfed500 [stack 0]
  Remove {
   name Remove_ML
   tile_color 0x555555ff
@@ -58,7 +58,7 @@ set N54d92000 [stack 0]
   xpos 214
   ypos -534
  }
-set N86795500 [stack 0]
+set N8bfece00 [stack 0]
  Dot {
   name Dot7
   tile_color 0x949494ff
@@ -112,20 +112,20 @@ set N86795500 [stack 0]
    name Input
    xpos 0
   }
-set N86794380 [stack 0]
+set Nabea1c00 [stack 0]
   Dot {
    name Dot1
    xpos 366
    ypos 5
   }
-set N86794000 [stack 0]
-push $N86794000
+set Nabea1880 [stack 0]
+push $Nabea1880
   Invert {
    name Invert1
    xpos 177
    ypos 34
   }
-push $N86794000
+push $Nabea1880
   Switch {
    inputs 2
    which {{"\[value parent.chew]>=0?0:1"}}
@@ -157,7 +157,7 @@ push $N86794000
    addUserKnob {7 JSplineVFake}
    JSplineVFake {{curve i l 0.9958 k x5 0.95 0.8 x20 0.5 x40 0.3 x80 0.2 l x200 0.1}}
   }
-set N867c0e00 [stack 0]
+set Nabea0700 [stack 0]
   Merge2 {
    inputs 2
    operation minus
@@ -165,7 +165,7 @@ set N867c0e00 [stack 0]
    xpos 332
    ypos 218
   }
-push $N867c0e00
+push $Nabea0700
   Switch {
    inputs 2
    which {{"\[value parent.chew]>=0?0:1"}}
@@ -184,7 +184,7 @@ push $N867c0e00
    xpos 177
    ypos 446
   }
-push $N86794380
+push $Nabea1c00
   ShuffleCopy {
    inputs 2
    name ShuffleCopy1
@@ -211,7 +211,7 @@ push $N86794380
   xpos -6
   ypos -270
  }
-push $N86795500
+push $N8bfece00
  Expression {
   channel3 alpha
   expr3 "( \[value proxy.type](\[if \{\[numvalue proxy.axis] == 0\} \{return \"x\"\} else \{return \"y\"\}]/proxy.thickness \[if \{\[numvalue proxy.direction] == 0\} \{return \"-\"\} else \{return \"+\"\}]  (frame+proxy.offset)*proxy.speed )  )*proxy.value"
@@ -258,20 +258,20 @@ push $N86795500
    name Input
    xpos 0
   }
-set N43898380 [stack 0]
+set Nabf0dc00 [stack 0]
   Dot {
    name Dot1
    xpos 366
    ypos 5
   }
-set N43898000 [stack 0]
-push $N43898000
+set Nabf0d880 [stack 0]
+push $Nabf0d880
   Invert {
    name Invert1
    xpos 177
    ypos 34
   }
-push $N43898000
+push $Nabf0d880
   Switch {
    inputs 2
    which {{"\[value parent.chew]>=0?0:1"}}
@@ -303,7 +303,7 @@ push $N43898000
    addUserKnob {7 JSplineVFake}
    JSplineVFake {{curve i l 0.9958 k x5 0.95 0.8 x20 0.5 x40 0.3 x80 0.2 l x200 0.1}}
   }
-set N438cce00 [stack 0]
+set Nabf0c700 [stack 0]
   Merge2 {
    inputs 2
    operation minus
@@ -311,7 +311,7 @@ set N438cce00 [stack 0]
    xpos 332
    ypos 218
   }
-push $N438cce00
+push $Nabf0c700
   Switch {
    inputs 2
    which {{"\[value parent.chew]>=0?0:1"}}
@@ -330,7 +330,7 @@ push $N438cce00
    xpos 177
    ypos 446
   }
-push $N43898380
+push $Nabf0dc00
   ShuffleCopy {
    inputs 2
    name ShuffleCopy1
@@ -351,7 +351,7 @@ push $N43898380
  end_group
  Merge2 {
   inputs 2
-  operation geometric
+  operation {{Merge_Proxy.operation1}}
   name Merge_ML
   tile_color 0x555555ff
   xpos 180
@@ -373,21 +373,21 @@ push $N43898380
   xpos 214
   ypos -78
  }
-set N4390ca80 [stack 0]
+set Nabf46380 [stack 0]
  Dot {
   name Dot2
   xpos 214
   ypos 18
  }
-set N4390c700 [stack 0]
-push $N4390ca80
-push $N86795500
+set Nabf46000 [stack 0]
+push $Nabf46380
+push $N8bfece00
  Dot {
   name Dot1
   xpos 544
   ypos -534
  }
-set N54d93c00 [stack 0]
+set Nabf75c00 [stack 0]
  ShuffleCopy {
   inputs 2
   red alpha
@@ -414,7 +414,7 @@ set N54d93c00 [stack 0]
   xpos 544
   ypos 66
  }
-set N54964a80 [stack 0]
+set Nabf75180 [stack 0]
  Blur {
   size {{blur}}
   name Blur1
@@ -422,7 +422,7 @@ set N54964a80 [stack 0]
   xpos 730
   ypos 49
  }
-push $N54d93c00
+push $Nabf75c00
  Dot {
   name Dot10
   xpos 1204
@@ -442,9 +442,9 @@ push $N54d93c00
   xpos 1170
   ypos 62
  }
-set N54964380 [stack 0]
-push $N54964380
-push $N54d92000
+set Nabf74000 [stack 0]
+push $Nabf74000
+push $N8bfed500
  Dot {
   name Dot11
   xpos 984
@@ -463,7 +463,7 @@ push $N54d92000
   xpos 984
   ypos 258
  }
-set N5498bc00 [stack 0]
+set Nabf9f500 [stack 0]
  STMap {
   inputs 2
   uv rgb
@@ -472,20 +472,20 @@ set N5498bc00 [stack 0]
   xpos 1170
   ypos 241
  }
-push $N4390c700
+push $Nabf46000
  Dot {
   name Dot3
   xpos 214
   ypos 114
  }
-set N4390c380 [stack 0]
+set Nabf9ee00 [stack 0]
  Dot {
   name Dot4
   xpos 214
   ypos 210
  }
-push $N4390c380
-push $N54964a80
+push $Nabf9ee00
+push $Nabf75180
  ShuffleCopy {
   inputs 2
   blue alpha
@@ -520,20 +520,21 @@ push $N54964a80
   xpos 510
   ypos 374
  }
-set N5498b880 [stack 0]
-push $N5498bc00
+set Nabfc9880 [stack 0]
+push $Nabf9f500
  Merge2 {
   inputs 2
   name Merge2
   xpos 950
   ypos 374
  }
-push $N5498b880
+push $Nabfc9880
  Switch {
   inputs 4
-  which {{modes}}
+  which {{output}}
   name Switch1
   label "Which: \[value which]"
+  selected true
   xpos 950
   ypos 536
  }
@@ -560,5 +561,14 @@ push $N5498b880
   addUserKnob {7 value R 0 10}
   value 10
   addUserKnob {7 offset R 0 100}
+ }
+ NoOp {
+  inputs 0
+  name Merge_Proxy
+  xpos 290
+  ypos -274
+  addUserKnob {20 User}
+  addUserKnob {4 operation1 M {atop average color-burn color-dodge conjoint-over copy difference disjoint-over divide exclusion from geometric hard-light hypot in mask matte max min minus multiply out over overlay plus screen soft-light stencil under xor ""}}
+  operation1 over
  }
 end_group
