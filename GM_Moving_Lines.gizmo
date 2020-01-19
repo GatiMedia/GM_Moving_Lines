@@ -2,9 +2,8 @@ Group {
  name GM_Moving_Lines
  tile_color 0xe8f57dff
  note_font "DejaVu Sans"
- selected true
- xpos 2984
- ypos -297
+ xpos 2930
+ ypos -303
  addUserKnob {20 User}
  addUserKnob {4 output l Output M {"Pattern Only" "Pattern Over Image" "Distorted Image" STMap ""}}
  addUserKnob {6 keep_a l "Keep Original Alpha" -STARTLINE}
@@ -534,7 +533,6 @@ push $Nabfc9880
   which {{output}}
   name Switch1
   label "Which: \[value which]"
-  selected true
   xpos 950
   ypos 536
  }
@@ -565,6 +563,7 @@ push $Nabfc9880
  NoOp {
   inputs 0
   name Merge_Proxy
+  selected true
   xpos 290
   ypos -274
   addUserKnob {20 User}
