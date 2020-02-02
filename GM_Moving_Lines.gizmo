@@ -558,12 +558,11 @@ push $Nae00380
   addUserKnob {20 User}
   addUserKnob {4 type l typ M {sin cos tan}}
   addUserKnob {4 axis M {x y}}
-  axis y
   addUserKnob {4 direction M {up down}}
   addUserKnob {7 thickness R 1 100}
   thickness 30
   addUserKnob {7 speed R 0 2}
-  speed 2
+  speed 1
   addUserKnob {7 value R 0 10}
   value 10
   addUserKnob {7 offset R 0 100}
