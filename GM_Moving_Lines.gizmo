@@ -8,7 +8,7 @@ Group {
  addUserKnob {6 keep_a l "Keep Original Alpha" -STARTLINE}
  keep_a true
  addUserKnob {26 ""}
- addUserKnob {41 type_1 l typ T proxy.type}
+ addUserKnob {41 type_1 l type T proxy.type}
  addUserKnob {41 axis_1 l axis T proxy.axis}
  addUserKnob {41 direction_1 l direction T proxy.direction}
  addUserKnob {41 thickness_1 l thickness T proxy.thickness}
