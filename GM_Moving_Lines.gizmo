@@ -8,14 +8,14 @@ Group {
  addUserKnob {6 keep_a l "Keep Original Alpha" -STARTLINE}
  keep_a true
  addUserKnob {26 ""}
- addUserKnob {41 type_1 l type T proxy.type}
- addUserKnob {41 axis_1 l axis T proxy.axis}
- addUserKnob {41 direction_1 l direction T proxy.direction}
- addUserKnob {41 thickness_1 l thickness T proxy.thickness}
- addUserKnob {41 chew l gap T key_chew_ML.chew}
- addUserKnob {41 speed_1 l speed T proxy.speed}
- addUserKnob {41 value_1 l value T proxy.value}
- addUserKnob {41 offset_1 l offset T proxy.offset}
+ addUserKnob {41 type_1 l Type T proxy.type}
+ addUserKnob {41 axis_1 l Axis T proxy.axis}
+ addUserKnob {41 direction_1 l Direction T proxy.direction}
+ addUserKnob {41 thickness_1 l Thickness T proxy.thickness}
+ addUserKnob {41 chew l Gap T key_chew_ML.chew}
+ addUserKnob {41 speed_1 l Speed T proxy.speed}
+ addUserKnob {41 value_1 l Value +INVISIBLE T proxy.value}
+ addUserKnob {41 offset_1 l Offset T proxy.offset}
  addUserKnob {7 blur l Blur R 0 100}
  addUserKnob {41 multiply l Color T Grade_ML.multiply}
  addUserKnob {6 invert +STARTLINE}
@@ -23,7 +23,7 @@ Group {
  addUserKnob {26 ""}
  addUserKnob {6 cross l "Enable Cross" +STARTLINE}
  cross true
- addUserKnob {41 operation1 T Merge_Proxy.operation1}
+ addUserKnob {41 operation1 l Operation T Merge_Proxy.operation1}
  addUserKnob {26 ""}
  addUserKnob {41 mix l Mix T Merge2.mix}
  addUserKnob {26 ""}
@@ -70,6 +70,7 @@ set N7a31880 [stack 0]
   expr3 "( \[value proxy.type](\[if \{\[numvalue proxy.axis] == 0\} \{return \"y\"\} else \{return \"x\"\}]/proxy.thickness \[if \{\[numvalue proxy.direction] == 0\} \{return \"-\"\} else \{return \"+\"\}]  (frame+proxy.offset)*proxy.speed )  )*proxy.value"
   name Moving_Lines_Exp1
   tile_color 0x555555ff
+  selected true
   xpos -40
   ypos -490
   addUserKnob {20 User}
@@ -247,7 +248,6 @@ push $N7a31880
   ypos -346
   addUserKnob {20 Controls}
   addUserKnob {7 chew t "\t\t" R -200 200}
-  chew 40
   addUserKnob {7 soften R 0 200}
   addUserKnob {6 matteMult +STARTLINE}
  }
@@ -452,7 +452,6 @@ push $N35ce000
   alpha black
   name Shuffle1
   label "\[value in]"
-  selected true
   xpos 950
   ypos -184
   disable {{keep_a}}
@@ -543,6 +542,15 @@ push $Nae00380
  }
  NoOp {
   inputs 0
+  name Merge_Proxy
+  xpos 290
+  ypos -274
+  addUserKnob {20 User}
+  addUserKnob {4 operation1 M {atop average color-burn color-dodge conjoint-over copy difference disjoint-over divide exclusion from geometric hard-light hypot in mask matte max min minus multiply out over overlay plus screen soft-light stencil under xor ""}}
+  operation1 over
+ }
+ NoOp {
+  inputs 0
   name proxy
   tile_color 0x555555ff
   xpos -150
@@ -550,23 +558,14 @@ push $Nae00380
   addUserKnob {20 User}
   addUserKnob {4 type l typ M {sin cos tan}}
   addUserKnob {4 axis M {x y}}
+  axis y
   addUserKnob {4 direction M {up down}}
-  direction down
   addUserKnob {7 thickness R 1 100}
-  thickness 33
+  thickness 30
   addUserKnob {7 speed R 0 2}
-  speed 0.5
+  speed 2
   addUserKnob {7 value R 0 10}
   value 10
   addUserKnob {7 offset R 0 100}
- }
- NoOp {
-  inputs 0
-  name Merge_Proxy
-  xpos 290
-  ypos -274
-  addUserKnob {20 User}
-  addUserKnob {4 operation1 M {atop average color-burn color-dodge conjoint-over copy difference disjoint-over divide exclusion from geometric hard-light hypot in mask matte max min minus multiply out over overlay plus screen soft-light stencil under xor ""}}
-  operation1 over
  }
 end_group
